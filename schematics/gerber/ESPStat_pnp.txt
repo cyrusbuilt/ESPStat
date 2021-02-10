@@ -1,0 +1,88 @@
+*Pick And Place List
+*Company=
+*Author=
+*eMail=
+*
+*Project=ESPStat
+*Date=15:58:46
+*CreatedBy=Fritzing 0.9.3b.04.19.5c895d327c44a3114e5fcc9d8260daf0cbb52806
+*
+*
+*Coordinates in mm, always center of component
+*Origin 0/0=Lower left corner of PCB
+*Rotation in degree (0-360, math. pos.)
+*
+*No;Value;Package;X;Y;Rotation;Side;Name
+1;;;30.9877;-89.8613;0;Bottom;TXT56
+2;;relay-jzc;47.5544;-74.242;0;Bottom;REL1
+3;;;59.9722;-96.0942;0;Bottom;TXT39
+4;;;127.564;-5.64201;0;Bottom;Hole1
+5;;5 mm [THT];27.2344;-7.49099;180;Bottom;LED7
+6;;;53.6548;-14.4615;0;Bottom;TXT28
+7;;;63.96;-14.4597;0;Bottom;TXT30
+8;;relay-jzc;72.9544;-74.242;0;Bottom;REL3
+9;;;5.88666;-23.2841;0;Bottom;TXT35
+10;;relay-jzc;85.6544;-74.242;0;Bottom;REL4
+11;;;108.867;-18.9656;0;Bottom;TXT62
+12;;;63.3589;-96.0942;0;Bottom;TXT40
+13;;;56.1622;-95.9531;0;Bottom;TXT38
+14;;3 mm [THT];53.9043;-18.921;180;Bottom;LED4
+15;;;16.4111;-83.7452;0;Bottom;TXT58
+16;;;72.5311;-32.1709;0;Bottom;TXT51
+17;;;27.3756;-2.25534;0;Bottom;TXT26
+18;;;15.6633;-2.25534;0;Bottom;TXT25
+19;;;41.3456;-2.39646;0;Bottom;TXT27
+20;;;67.31;-47.4109;0;Bottom;TXT50
+21;;;22.8711;-80.7254;0;Bottom;TXT59
+22;;;95.8144;-48.822;0;Bottom;TXT24
+23;;;74.0833;-96.0942;0;Bottom;TXT43
+24;;;103.394;-59.1263;0;Bottom;TXT45
+25;;THT;103.434;-53.902;0;Bottom;J3
+26;;;70.4144;-96.0942;0;Bottom;TXT42
+27;;THT;128.072;-35.769;0;Bottom;J2
+28;150;THT;89.4644;-48.822;-90;Bottom;R2
+29;;5 mm [THT];15.8044;-7.49099;180;Bottom;LED6
+30;;5 mm [THT];96.3934;-53.902;-90;Bottom;LED1
+31;;;109.22;-21.7812;0;Bottom;TXT61
+32;;;64.0644;-57.712;0;Bottom;Via2
+33;;THT;1.83444;-29.772;0;Bottom;J4
+34;;;106.177;-54.2011;-90;Bottom;TXT46
+35;;;2.39889;-46.282;90;Bottom;TXT53
+36;;THT;65.0674;-91.24;-90;Bottom;J1
+37;;;132.503;-70.5531;-90;Bottom;TXT63
+38;;;132.503;-37.1098;0;Bottom;TXT47
+39;;;58.88;-14.4597;0;Bottom;TXT29
+40;;;108.373;-24.692;0;Bottom;TXT60
+41;;;124.441;-30.1408;0;Bottom;TXT49
+42;;;118.698;-66.709;-90;Bottom;TXT52
+43;;;5.64444;-5.64201;0;Bottom;Hole3
+44;;relay-jzc;60.2544;-74.242;0;Bottom;REL2
+45;100nF;100 mil [THT, multilayer];78.0344;-23.422;0;Bottom;C2
+46;;;5.27777;-31.1322;0;Bottom;TXT33
+47;;THT;66.6044;-47.552;-90;Bottom;IC1
+48;;5 mm [THT];39.9344;-7.49099;180;Bottom;LED8
+49;;;106.786;-9.69896;0;Bottom;IMG2
+50;;;4.37444;-94.542;0;Bottom;Hole4
+51;;;72.9544;-32.312;0;Bottom;IC2
+52;;;22.8711;-86.5109;0;Bottom;TXT57
+53;;;28.5275;-29.772;90;Bottom;Huzzah ESP8266
+54;10k;THT;25.9644;-51.362;0;Bottom;R1
+55;;3 mm [THT];69.1443;-18.921;180;Bottom;LED5
+56;;;103.677;-48.543;0;Bottom;TXT44
+57;;;128.834;-94.542;0;Bottom;Hole2
+58;;;24.7151;-61.522;-90;Bottom;DHT1
+59;;;21.8744;-95.7014;0;Bottom;TXT54
+60;;3 mm [THT];64.0643;-18.921;180;Bottom;LED3
+61;;3 mm [THT];58.9843;-18.921;180;Bottom;LED2
+62;;;5.13666;-33.6722;0;Bottom;TXT32
+63;4.7k;THT;84.3844;-48.822;-90;Bottom;R3
+64;;;20.2211;-92.9175;0;Bottom;TXT55
+65;;;5.88666;-28.2842;0;Bottom;TXT34
+66;;;42.4744;-53.902;0;Bottom;Via1
+67;0.1mF;100 mil [THT, multilayer];80.5744;-47.552;90;Bottom;C1
+68;;;5.56;-26.0522;0;Bottom;TXT36
+69;;;132.786;-34.1465;-90;Bottom;TXT48
+70;;;66.8867;-96.0942;0;Bottom;TXT41
+71;;;118.92;-66.8547;90;Bottom;M1
+72;;;5.27777;-36.0711;0;Bottom;TXT37
+73;;;69.4633;-14.6008;0;Bottom;TXT31

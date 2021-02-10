@@ -1,0 +1,13 @@
+{
+	"clientId": "ESPSTAT-MASTER",
+	"firmwareVersion": "1.0",
+	"sysState": 1,
+	"mode": 1,
+	"isMaster": true,
+	"humidity": 17.70,
+	"tempC": 22.10,
+	"tempF": 71.78,
+	"headIndexC": 20.83,
+	"heatIndexF": 69.49,
+	"setpoint": 73.0
+}
