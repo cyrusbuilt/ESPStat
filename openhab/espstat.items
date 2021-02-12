@@ -1,0 +1,16 @@
+Group gESPStatChartItems
+String ESPStatSystemID "System ID: [%s]" <keyring> { channel="mqtt:topic:mosquitto:ESPStatSysID" }
+String ESPStatFirmwareVersion "Firmware version: [%s]" { channel="mqtt:topic:mosquitto:ESPStatVersion" }
+Number ESPStatStatus <status> { channel="mqtt:topic:mosquitto:ESPStatSysState" }
+Number ESPStatSysMode <settings> (gESPStatChartItems) { channel="mqtt:topic:mosquitto:ESPStatMode" }
+Number ESPStatSystemCommand "Actions" <switch>
+
+Number ESPStatTemperature "Temperature: [%.1f °F]" <temperature> (gESPStatChartItems) { channel="mqtt:topic:mosquitto:ESPStatTemp" }
+Number ESPStatHumid "Humidity: [%.1f %%]" <humidity> (gESPStatChartItems) { channel="mqtt:topic:mosquitto:ESPStatHumidity" }
+Number ESPStatHeatIdx "Heat index: [%.1f °F]" <temperature_hot> (gESPStatChartItems) { channel="mqtt:topic:mosquitto:ESPStatHeatIndex" }
+
+Switch ESPStatAuxHeatStat "AUX/EM Heat: [%s]" <energy> { channel="mqtt:topic:mosquitto:ESPStatAuxHeat" }
+Switch ESPStatSysRunning "System Running: [%s]" <fan> (gESPStatChartItems) { channel="mqtt:topic:mosquitto:ESPStatSystemRunning" }
+Number ESPStatTempSetPoint "Setpoint: [%d °F]" <heating>
+Number ESPStatSetMode <climate>
+Number ESPStatCharPeriod

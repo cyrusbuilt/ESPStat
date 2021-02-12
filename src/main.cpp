@@ -100,8 +100,8 @@ void publishSystemState() {
         doc["heatIndexF"] = heatIndexF;
         doc["mode"] = (uint8_t)HvacControl.getMode();
         doc["tempAverageF"] = averageTemp;
-        doc["isRunning"] = isRunning;
-        doc["auxHeatOn"] = HvacControl.isAuxHeatOn();
+        doc["isRunning"] = isRunning ? "ON" : "OFF";
+        doc["auxHeat"] = HvacControl.isAuxHeatOn() ? "ON" : "OFF";
         doc.shrinkToFit();
 
         String jsonStr;
@@ -751,11 +751,11 @@ void handleControlRequest(ControlCommand command, HvacMode mode, float setpoint)
             break;
         case ControlCommand::SET_MODE:
             HvacControl.setMode(config.currentMode);
-            // TODO anything else to do here?
             break;
         case ControlCommand::SET_TEMP:
             config.setPoint = setpoint;
-            // TODO anything else to do here?
+            Serial.print(F("INFO: New temperature setpoint: "));
+            Serial.println(config.setPoint);
             break;
         case ControlCommand::REQUEST_STATUS:
             break;

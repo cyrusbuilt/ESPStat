@@ -1,0 +1,34 @@
+sitemap espstat label="ESPStat" {
+	Frame label="System Status and Control" {
+		Text item=ESPStatSystemID
+		Text item=ESPStatFirmwareVersion
+		Text item=ESPStatStatus label="System State: Booting" visibility=[ESPStatStatus==0]
+		Text item=ESPStatStatus label="System State: Normal" visibility=[ESPStatStatus==1]
+		Text item=ESPStatStatus label="System State: Disabled" visibility=[ESPStatStatus==2]
+		Text item=ESPStatStatus label="System State: Updating" visibility=[ESPStatStatus==3]
+		Text item=ESPStatStatus label="System State: Offline" visibility=[ESPStatStatus==NULL,ESPStatStatus==UNDEF]
+		Selection item=ESPStatSystemCommand label="Control" mappings=[0="Disable",1="Enable",2="Reboot",3="Request Status",4="I/O Reset"]
+	}
+
+	Frame label="Thermostat Status and Control" {
+		Text item=ESPStatSysMode label="Current Mode: Off" visibility=[ESPStatSysMode==0]
+		Text item=ESPStatSysMode label="Current Mode: Cool" visibility=[ESPStatSysMode==1]
+		Text item=ESPStatSysMode label="Current Mode: Heat" visibility=[ESPStatSysMode==2]
+		Text item=ESPStatSysMode label="Current Mode: Fan Only" visibility=[ESPStatSysMode==3]
+		Text item=ESPStatSysMode label="Current Mode: Unknown" visibility=[ESPStatSysMode==NULL,ESPStatSysMode==UNDEF]
+		Text item=ESPStatTemperature
+		Text item=ESPStatHumid
+		Text item=ESPStatHeatIdx
+		Text item=ESPStatAuxHeatStat
+		Text item=ESPStatSysRunning
+		Switch item=ESPStatSetMode label="Mode" mappings=[0="Off",1="Cool",2="Heat",3="Fan"] 
+		Setpoint item=ESPStatTempSetPoint minValue=50 maxValue=90 step=1
+	}
+
+	Frame label="History" {
+		Switch item=ESPStatCharPeriod label="Chart Period" mappings=[0="Hour",1="Day",2="Week"]
+		Chart item=gESPStatChartItems period=h refresh=3000 visibility=[ESPStatCharPeriod==0,ESPStatCharPeriod==NULL]
+		Chart item=gESPStatChartItems period=D refresh=3000 visibility=[ESPStatCharPeriod==1]
+		Chart item=gESPStatChartItems period=W refresh=3000 visibility=[ESPStatCharPeriod==2]
+	}
+}

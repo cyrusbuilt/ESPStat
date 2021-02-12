@@ -1,0 +1,13 @@
+Thing mqtt:topic:mosquitto:cylights "MQTT Thing ESPStat" (mqtt:broker:mosquitto) @ "ESPStat" {
+	Channels:
+		Type string : ESPStatVersion [stateTopic="espstat/status", transformationPattern="JSONPATH:$.firmwareVersion"]
+		Type number : ESPStatSysState [stateTopic="espstat/status", transformationPattern="JSONPATH:$.systemState"]
+		Type string : ESPStatSysID [stateTopic="espstat/status", transformationPattern="JSONPATH:$.client_id"]
+		Type number : ESPStatHumidity [stateTopic="espstat/status", transformationPattern="JSONPATH:$.humidity"]
+		Type number : ESPStatTemp [stateTopic="espstat/status", transformationPattern="JSONPATH:$.tempAverageF"]
+		Type number : ESPStatHeatIndex [stateTopic="espstat/status", transformationPattern="JSONPATH:$.heatIndexF"]
+		Type number : ESPStatMode [stateTopic="espstat/status", transformationPattern="JSONPATH:$.mode"]
+		Type switch : ESPStatAuxHeat [stateTopic="espstat/status", transformationPattern="JSONPATH:$.auxHeat"]
+		Type switch : ESPStatSystemRunning [stateTopic="espstat/status", transformationPattern="JSONPATH:$.isRunning"]
+		Type switch : ESPStatActivator [commandTopic="espstat/control"]
+}

@@ -9,8 +9,8 @@
 enum class SystemState: uint8_t {
 	BOOTING = 0,
 	NORMAL = 1,
-	DISABLED = 3,
-	UPDATING = 4
+	DISABLED = 2,
+	UPDATING = 3
 };
 
 enum class ControlCommand: uint8_t {

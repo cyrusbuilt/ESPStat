@@ -88,34 +88,42 @@ void HvacControlClass::setMode(HvacMode mode) {
 }
 
 void HvacControlClass::fanOn() {
+	Serial.println(F("INFO: Fan relay on."));
 	this->toggleRelay(HvacRelay::FAN, HvacStatLed::FAN, true);
 }
 
 void HvacControlClass::fanOff() {
+	Serial.println(F("INFO: Fan relay off."));
 	this->toggleRelay(HvacRelay::FAN, HvacStatLed::FAN, false);
 }
 
 void HvacControlClass::compressorOn() {
+	Serial.println(F("INFO: Compressor relay on."));
 	this->toggleRelay(HvacRelay::COMPRESSOR, HvacStatLed::COMPRESSOR, true);
 }
 
 void HvacControlClass::compressorOff() {
+	Serial.println(F("INFO: Compressor relay off."));
 	this->toggleRelay(HvacRelay::COMPRESSOR, HvacStatLed::COMPRESSOR, false);
 }
 
 void HvacControlClass::reversingValveOn() {
+	Serial.println(F("INFO: Reversing valve relay on."));
 	this->toggleRelay(HvacRelay::REVERSINGVALVE, HvacStatLed::REVERSINGVALVE, true);
 }
 
 void HvacControlClass::reversingValveOff() {
+	Serial.println(F("INFO: Reversing valve relay off."));
 	this->toggleRelay(HvacRelay::REVERSINGVALVE, HvacStatLed::REVERSINGVALVE, false);
 }
 
 void HvacControlClass::auxHeatOn() {
+	Serial.println(F("INFO: Aux heat relay on."));
 	this->toggleRelay(HvacRelay::AUX, HvacStatLed::AUX, true);
 }
 
 void HvacControlClass::auxHeatOff() {
+	Serial.println(F("INFO: Aux heat relay off."));
 	this->toggleRelay(HvacRelay::AUX, HvacStatLed::AUX, false);
 }
 

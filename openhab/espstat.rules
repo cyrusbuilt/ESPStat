@@ -1,0 +1,52 @@
+val String fileName = "espstat.rules"
+val String controlChannel = "espstat/control"
+var String jsonString = ""
+var String cmd = ""
+val actionsBroker = getActions("mqtt", "mqtt:broker:mosquitto")
+
+rule "ESPStat Send System Command"
+when
+	Item ESPStatSystemCommand received command
+then
+	cmd = receivedCommand.toString()
+	logInfo(fileName, "Thermotstat action received command: " + cmd)
+	jsonString = "{\"client_id\":\"ESPSTAT_MASTER\",\"command\":" + cmd + "}"
+	logInfo(fileName, "Publishing MQTT payload: " + jsonString)
+	actionsBroker.publishMQTT(controlChannel, jsonString)
+	ESPStatSystemCommand.postUpdate(NULL)
+	jsonString = ""
+	cmd = ""
+end
+
+rule "ESPStat Mode Change"
+when
+	Item ESPStatSetMode changed
+then
+	cmd = ESPStatSetMode.state.toString()
+	jsonString = "{\"client_id\":\"ESPSTAT_MASTER\",\"command:\":5,\"mode\":" + cmd + "}"
+	logInfo(fileName, "Publishing MQTT payload: " + jsonString)
+	jsonString = ""
+	cmd = ""
+end
+
+rule "ESPStat Temp Change"
+when
+	Item ESPStatTempSetPoint changed
+then
+	var temp = ESPStatTempSetPoint.state.toString()
+	jsonString = "{\"client_id\":\"ESPSTAT_MASTER\",\"command\":6,\"setPoint\":" + temp + "}"
+	logInfo(fileName, "Publishing MQTT payload: " + jsonString)
+	jsonString = ""
+end
+
+rule "ESPStat Mode Change Update"
+when
+	Item ESPStatSysMode changed
+then
+	var value = ESPStatSysMode.state
+	if (value == NULL) {
+		value = 0
+	}
+
+	ESPStatSetMode.postUpdate(value)
+end
