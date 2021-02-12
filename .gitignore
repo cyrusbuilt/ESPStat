@@ -12,3 +12,6 @@ test/
 
 # VSCode stuff
 .vscode/
+
+# macOS crap
+.DS_Store
