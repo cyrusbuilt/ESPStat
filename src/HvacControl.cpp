@@ -73,5 +73,82 @@ HvacMode HvacControlClass::getMode() {
 	return this->_mode;
 }
 
+void HvacControlClass::toggleRelay(HvacRelay relay, HvacStatLed led, bool on) {
+	uint8_t relAddr = this->getRelayAddress(relay);
+	uint8_t ledAddr = this->getLedAddress(led);
+	this->_busController->digitalWrite(relAddr, on ? HIGH : LOW);
+	this->_busController->digitalWrite(ledAddr, on ? HIGH : LOW);
+}
+
+void HvacControlClass::setMode(HvacMode mode) {
+	if (this->_mode != mode && this->modeChangeHandler != NULL) {
+		this->_mode = mode;
+		this->modeChangeHandler(mode);
+	}
+}
+
+void HvacControlClass::fanOn() {
+	this->toggleRelay(HvacRelay::FAN, HvacStatLed::FAN, true);
+}
+
+void HvacControlClass::fanOff() {
+	this->toggleRelay(HvacRelay::FAN, HvacStatLed::FAN, false);
+}
+
+void HvacControlClass::compressorOn() {
+	this->toggleRelay(HvacRelay::COMPRESSOR, HvacStatLed::COMPRESSOR, true);
+}
+
+void HvacControlClass::compressorOff() {
+	this->toggleRelay(HvacRelay::COMPRESSOR, HvacStatLed::COMPRESSOR, false);
+}
+
+void HvacControlClass::reversingValveOn() {
+	this->toggleRelay(HvacRelay::REVERSINGVALVE, HvacStatLed::REVERSINGVALVE, true);
+}
+
+void HvacControlClass::reversingValveOff() {
+	this->toggleRelay(HvacRelay::REVERSINGVALVE, HvacStatLed::REVERSINGVALVE, false);
+}
+
+void HvacControlClass::auxHeatOn() {
+	this->toggleRelay(HvacRelay::AUX, HvacStatLed::AUX, true);
+}
+
+void HvacControlClass::auxHeatOff() {
+	this->toggleRelay(HvacRelay::AUX, HvacStatLed::AUX, false);
+}
+
+void HvacControlClass::setModeChangeHandler(void (*modeChangeHandler)(HvacMode mode)) {
+	this->modeChangeHandler = modeChangeHandler;
+}
+
+String HvacControlClass::getModeDescription(HvacMode mode) {
+	String result = "unknown";
+	switch (mode) {
+		case HvacMode::OFF:
+			result = "OFF";
+			break;
+		case HvacMode::COOL:
+			result = "COOL";
+			break;
+		case HvacMode::FANONLY:
+			result = "FAN ONLY";
+			break;
+		case HvacMode::HEAT:
+			result = "HEAT";
+			break;
+		default:
+			break;
+	}
+
+	return result;
+}
+
+bool HvacControlClass::isAuxHeatOn() {
+	uint8_t ledAddr = this->getLedAddress(HvacStatLed::AUX);
+	return this->_busController->digitalRead(ledAddr) == HIGH;
+}
+
 HvacControlClass HvacControl;
 
