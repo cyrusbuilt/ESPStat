@@ -1,7 +1,6 @@
 # Platform IO stuff we don't need
 .pio/
 lib/
-include/
 test/
 
 # Backups

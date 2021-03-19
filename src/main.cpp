@@ -554,7 +554,11 @@ void failSafe() {
     ESPCrashMonitor.defer();
     Serial.println();
     Serial.println(F("ERROR: Entering failsafe (config) mode..."));
+
+    // TODO Need to carefully consider this. Some tasks may need to stay running
+    // so as not to damage the compressor.
     taskMan.disableAll();
+
     ledAct.on();
     sysState = SystemState::DISABLED;
     publishSystemState();
