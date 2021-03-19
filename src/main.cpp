@@ -232,8 +232,17 @@ void saveConfiguration() {
         Serial.println(F("ERROR: Filesystem not mounted."));
         return;
     }
+
+    File configFile = SPIFFS.open(CONFIG_FILE_PATH, "w");
+    if (!configFile) {
+        Serial.println(F("FAIL"));
+        Serial.println(F("ERROR: Failed to open config file for writing."));
+        return;
+    }
     
-    StaticJsonDocument<350> doc;
+    uint16_t freeMem = ESP.getMaxFreeBlockSize() - 512;
+
+	DynamicJsonDocument doc(freeMem);
     doc["hostname"] = config.hostname;
     doc["useDHCP"] = config.useDhcp;
     doc["ip"] = config.ip.toString();
@@ -254,17 +263,11 @@ void saveConfiguration() {
         doc["otaPort"] = config.otaPort;
         doc["otaPassword"] = config.otaPassword;
     #endif
-
-    File configFile = SPIFFS.open(CONFIG_FILE_PATH, "w");
-    if (!configFile) {
-        Serial.println(F("FAIL"));
-        Serial.println(F("ERROR: Failed to open config file for writing."));
-        doc.clear();
-        return;
-    }
+    doc.shrinkToFit();
 
     serializeJsonPretty(doc, configFile);
     doc.clear();
+    
     configFile.flush();
     configFile.close();
     Serial.println(F("DONE"));
